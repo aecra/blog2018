@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0，user-scalable=no">
+    <meta name="description" content="轮极熙域-追求简约" />
+    <link rel="icon" type="image/gif" href="images/ioc.png" >
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="js/jquery-3.1.1.js"></script>
+    <script src="js/vue.js"></script>
+    <title>
+        文章检索-轮极熙域
+    </title>
+
+    <!-- upwill.cn Baidu tongji analytics -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?4402a017ad6d45cf992d43da7c385bdc";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    
+    <script type="text/javascript">
+        //菜单按钮的处理
+        function display_change(){
+            if(document.getElementById("list").style.display == 'none'){
+                document.getElementById("list").style.display = 'flex';
+            }else{
+                document.getElementById("list").style.display = 'none';
+                }
+        }
+
+        function find(){
+            $.ajax({
+                type:"GET",
+                url:"background/find.php?content="+$("#find_in").val(),
+                success:function(result){
+                    if(result!=""){
+                        $("#article").html(result);
+                    }else{
+                        $("#article").html("查询信息为空");
+                    }
+                
+            }});
+        }
+    </script>
+</head>
+<body>
+
+<div id="head">
+    <div id="icon">
+    	<a href="./"><img src="./images/ioc.png"></a>
+    </div>
+    <div id="web_name">
+    	轮极熙域
+    </div>
+    <div id="menu">
+    	<img src="./images/menu.png"  onclick="display_change()" onmouseenter="display_change()">
+    </div>
+</div>
+
+<div id="list" onmouseleave="display_change()">
+    <div>
+        <a href="#">文章检索</a>
+    </div>
+    <div>
+        <a href="#">文章检索</a>
+    </div>
+    <div>
+        <a href="#">文章检索</a>
+    </div>
+</div>
+
+<div id="lead">
+	<a href="./"><img src="./images/ioc.png"></a>
+	<div id="lead_content">
+		轮极熙域&nbsp;&nbsp;-&nbsp;&nbsp;追求简约
+		<p>
+			一个属于自己的网络空间，分享学习、技术、新闻、热点、生活等乱七八糟的东西，也是一个默默奋斗的“收藏夹”。
+		</p>
+	</div>
+</div>
+
+<div id="article_lead">
+    <p>-&nbsp;检索&nbsp;-</p>
+    <p style="display: flex;align-items: center;justify-content: center;">
+        <input type="text" id="find_in" placeholder="请输入查询内容">
+        <button id="find_send" onclick="find()">查询</button>
+    </p>
+</div>
+
+<div id="article" style="min-height: 700px">
+
+</div>
+
+<div style="background-color: #2E3033;line-height: 10px;padding: 0;width: 100%;position: inherit;bottom: 0px;border-top-width: 5px;border-top-color: black" align="center">
+    <br>
+        <div style="right:5%;color: #eaeaec;font-size: 12px">
+            © 2018-2019 upwill.cn 版权所有 | ICP备案号：<a href="http://www.miitbeian.gov.cn/" style="color: white;text-decoration:none;" target="_blank">冀ICP备18006040号-1</a>|
+                <a target="_blank" href="http://www.beian.gov.cn/portalregisterSystemInfo?recordcode=13018402000194" style="display:inline-block;text-decoration:none;height:20px;color: #eaeaec">
+                    <img src="./images/beian.png">
+                    冀公网安备 13018402000194号
+                </a>
+         
+        </div>
+        <br>
+    </div>
+</div>
+</body>
+</html>
